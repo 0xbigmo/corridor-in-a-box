@@ -19,7 +19,20 @@
     "hold records in the registry. They are listed here because a record nobody",
     "refreshes decays into a stale row the scheduled job will never touch — the",
     "registry's whole claim is that staleness is visible AND fixable, so every",
-    "domain it holds belongs in this list."
+    "domain it holds belongs in this list.",
+    "BlindPay appears in the Stellar Anchor Directory for Argentina, Brazil,",
+    "Colombia, Mexico, and the United States, but the entry publishes no website",
+    "or toml_file. BlindPay's official home domain is blindpay.com; its",
+    "https://blindpay.com/.well-known/stellar.toml returned HTTP 403 on",
+    "2026-10-16, so no SEP-31 receive capability was verified and no corridor",
+    "manifest was added. This records an inconclusive probe, not a claim of",
+    "SEP-6 or SEP-24 support."
   ],
-  "domains": ["testanchor.stellar.org", "cowrie.exchange", "stellar.org", "lobstr.co"]
+  "domains": [
+    "testanchor.stellar.org",
+    "cowrie.exchange",
+    "stellar.org",
+    "lobstr.co",
+    "blindpay.com"
+  ]
 }
