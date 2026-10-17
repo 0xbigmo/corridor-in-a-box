@@ -7,6 +7,13 @@ follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html) once it reache
 
 ## [Unreleased]
 
+### Added — `OpenTransaction.instructions` discriminated union (#183)
+
+- Add `DepositInstructions` discriminated union (`stellar_payment`, `claimable_balance`, `adapter_settled`) to `@corridor/adapter-kit`.
+- Update `OpenTransaction` to carry `instructions: DepositInstructions` while retaining deprecated optional `depositAddress`, `memo`, and `memoType` fields and adding `toLegacy()` helper for single-release backward compatibility.
+- Update `Sep31Adapter` and `createMockAdapter` to return `instructions` with `kind: "stellar_payment"`.
+- Update `settle()` in `@corridor/engine` to switch on `instructions.kind` and fail closed (`SETTLEMENT_FAILED`, non-retryable) on unhandled instruction kinds before attempting payment submission.
+
 ### Added — `--json` flag to `pnpm probe:anchor` (#232)
 
 - Adds `--json` flag parsing to `examples/probe-anchor.ts` accepted in any argv position.
