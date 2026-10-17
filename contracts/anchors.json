@@ -26,13 +26,20 @@
     "https://blindpay.com/.well-known/stellar.toml returned HTTP 403 on",
     "2026-10-16, so no SEP-31 receive capability was verified and no corridor",
     "manifest was added. This records an inconclusive probe, not a claim of",
-    "SEP-6 or SEP-24 support."
+    "SEP-6 or SEP-24 support.",
+    "",
+    "mykobo.co is a real EUR anchor (MyKobo, Warsaw, Poland), listed in the Stellar",
+    "Anchor Directory. Its stellar.toml advertises SEP-6, SEP-24 and SEP-31, but the",
+    "host it publishes for those APIs (stellar.mykobo.co) does not resolve, so the",
+    "SEP-10 and SEP-31 probes fail and no corridor manifest is written. Probed",
+    "2026-10-16; MyKobo's status page listed the Anchor service as down at the time."
   ],
   "domains": [
     "testanchor.stellar.org",
     "cowrie.exchange",
     "stellar.org",
     "lobstr.co",
-    "blindpay.com"
+    "blindpay.com",
+    "mykobo.co"
   ]
 }
