@@ -158,7 +158,7 @@ describe("corridor CLI", () => {
   it("prints usage and exits 2 with no args", () => {
     const r = run([]);
     expect(r.status).toBe(2);
-    expect(r.stderr).toContain("usage: corridor <validate|plan|lint|canary>");
+    expect(r.stderr).toContain("usage: corridor <validate|plan|lint|canary|new>");
   });
 
   it("exits 2 on an unknown subcommand", () => {

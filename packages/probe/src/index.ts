@@ -73,6 +73,8 @@ export interface ProbeResult {
   readonly tomlHash: string;
   /** Per-probe detail, in the order probes were attempted. */
   readonly outcomes: readonly ProbeOutcome[];
+  /** Raw text of stellar.toml if successfully fetched. */
+  readonly toml?: string;
 }
 
 export interface ProbeOptions {
@@ -278,7 +280,7 @@ export async function probeAnchor(
     }
   }
 
-  return { domain, seps, probesRun, probesPassed, tomlHash, outcomes };
+  return { domain, seps, probesRun, probesPassed, tomlHash, outcomes, toml };
 }
 
 export interface FormattedProbeResultJson {
