@@ -232,6 +232,34 @@ describe("createMockAdapter", () => {
     });
   });
 
+  it("capabilities: mock adapter returns default and honors override (#187)", () => {
+    const def = createMockAdapter();
+    expect(def.capabilities()).toEqual({
+      protocol: "mock",
+      quotes: ["sep38_firm"],
+      kyc: "sep12",
+      settlement: ["stellar_payment"],
+      refunds: "request",
+      callbacks: false,
+    });
+
+    const overridden = createMockAdapter({
+      capabilities: {
+        protocol: "custom-mock",
+        quotes: ["native"],
+        callbacks: true,
+      },
+    });
+    expect(overridden.capabilities()).toEqual({
+      protocol: "custom-mock",
+      quotes: ["native"],
+      kyc: "sep12",
+      settlement: ["stellar_payment"],
+      refunds: "request",
+      callbacks: true,
+    });
+  });
+
   it("openTransaction: returns instructions with kind 'stellar_payment'", async () => {
     const adapter = createMockAdapter();
     const q = await adapter.requestQuote(intent, corridor());
