@@ -20,6 +20,7 @@ import { isSafeUrl } from "./url-safety";
 
 export { tomlHash } from "./toml-hash";
 export { isSafeUrl } from "./url-safety";
+export { renderSweepMarkdown, renderSweepJson, isUsableSep31OffRamp } from "./report";
 export {
   ANCHOR_KINDS,
   isValidAnchorDomain,
@@ -330,3 +331,5 @@ export function parseProbeArgs(args: readonly string[]): { domain?: string; json
   }
   return { domain, json };
 }
+
+export * from "./loader";
