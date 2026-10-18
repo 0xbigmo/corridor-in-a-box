@@ -14,6 +14,13 @@
 # it just cannot write them — so the probe path stays continuously exercised
 # even before a signing key is configured, and the log says plainly which mode
 # it ran in.
+#
+# On scheduled runs the last step is `pnpm registry:staleness`
+# (examples/check-staleness.ts). It reads every domain in contracts/anchors.json
+# back from the registry and FAILS the run, with a ::error:: per domain, if one
+# was never attested or was last attested more than MAX_STALENESS_LEDGERS ago
+# (default ~2 days). That catches the case the secret check cannot: a secret
+# that is set but whose attestations keep failing or being skipped.
 name: attest-anchors
 on:
   schedule:
@@ -96,3 +103,7 @@ jobs:
           echo "::warning::ATTESTER_SECRET is not set — probes ran but nothing was" \
                "written on chain. Set the secret to an enrolled attester key to" \
                "keep the registry fresh."
+
+      - name: Verify registry freshness
+        if: ${{ github.event_name == 'schedule' }}
+        run: pnpm registry:staleness
